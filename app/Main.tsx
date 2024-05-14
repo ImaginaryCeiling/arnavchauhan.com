@@ -9,18 +9,17 @@ const MAX_DISPLAY = 5
 export default function Home({ posts }) {
   return (
     <>
-      <div className="mt-7·flex·items-center·justify-between·space-y-0">
+      <div className="flex items-center justify-between space-y-0 mt-7">
         <div className="space-y-4">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             <span className="wave">👋🏻</span> Hi, <span>I'm </span>
             <span className="text-sky-500 dark:text-sky-400">Arnav Chauhan</span>
           </h1>
-          <div className='text-2xl'>
-            <p >Welcome to my corner of the Internet.</p>
-          </div>
+          <div className='text-2xl'><p >Welcome to my corner of the Internet.</p></div>
           <Link
             href="/about"
-            className="mt-4·inline-block·rounded·bg-gradient-to-r·from-green-400·to-blue-500·px-4·py-2·font-bold·text-white">
+            className="bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
+          >
             About Me
           </Link>
         </div>
