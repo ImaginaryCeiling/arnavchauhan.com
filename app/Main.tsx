@@ -2,17 +2,41 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
-import NewsletterForm from 'pliny/ui/NewsletterForm'
+import Image from 'next/image'
 
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
   return (
     <>
+      <div className="flex items-center justify-between space-y-0 mt-4 mb-7">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            <span className="wave">👋🏻</span> Hi, <span>I'm </span>
+            <span className="text-sky-500 dark:text-sky-400">Arnav Chauhan</span>
+          </h1>
+          <div className='text-2xl'><p >Welcome to my corner of the Internet.</p></div>
+          <Link
+            href="/about"
+            className="bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
+          >
+            About Me
+          </Link>
+        </div>
+        <div className="rounded-full shadow-lg ">
+          <Image
+            src="/static/images/IMG_7084.png"
+            alt="avatar"
+            width={250}
+            height={250}
+            className="h-50 w-50 rounded-full shadow-gray-300"
+          />
+        </div>
+      </div>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
+            Latest Posts
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
@@ -79,11 +103,6 @@ export default function Home({ posts }) {
           >
             All Posts &rarr;
           </Link>
-        </div>
-      )}
-      {siteMetadata.newsletter?.provider && (
-        <div className="flex items-center justify-center pt-4">
-          <NewsletterForm />
         </div>
       )}
     </>
