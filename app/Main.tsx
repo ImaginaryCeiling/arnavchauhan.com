@@ -9,7 +9,7 @@ const MAX_DISPLAY = 5
 export default function Home({ posts }) {
   return (
     <>
-      <div className="flex items-center justify-between space-y-0 mt-7">
+      <div className="flex items-center justify-between space-y-0 mt-4 mb-7">
         <div className="space-y-4">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             <span className="wave">👋🏻</span> Hi, <span>I'm </span>
