@@ -7,7 +7,7 @@ const siteMetadata = {
   description: 'Arnav Chauhan\'s Blog and Portfolio',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'arnavchauhan.com',
+  siteUrl: 'https://arnavchauhan.com',
   siteRepo: 'https://github.com/ImaginaryCeiling/arnavchauhan.com?tab=readme-ov-file',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/logo.png',
