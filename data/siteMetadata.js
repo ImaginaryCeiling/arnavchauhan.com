@@ -1,16 +1,16 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'arnavchauhan.com',
+  title: 'ArnavChauhan',
   author: 'Arnav Chauhan',
   headerTitle: 'ArnavChauhan',
   mainpageHead: "Latest Posts",
-  description: '',
+  description: 'Arnav Chauhan\'s Blog and Portfolio',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://arnavchauhan.com',
   siteRepo: 'https://github.com/ImaginaryCeiling/arnavchauhan.com?tab=readme-ov-file',
   siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/logo.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'arnav216@gmail.com',
   github: 'https://github.com/ImaginaryCeiling',
