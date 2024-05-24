@@ -5,6 +5,7 @@ const siteMetadata = {
   headerTitle: 'ArnavChauhan',
   mainpageHead: "Latest Posts",
   description: 'Arnav Chauhan\'s Blog and Portfolio',
+  latestPostDescription: "Check out some of my latest posts",
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://arnavchauhan.com',

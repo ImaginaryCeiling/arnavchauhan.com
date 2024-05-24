@@ -15,7 +15,14 @@ export default function Home({ posts }) {
             <span className="wave">👋🏻</span> Hi, <span>I'm </span>
             <span className="text-sky-500 dark:text-sky-400">Arnav Chauhan</span>
           </h1>
-          <div className='text-2xl'><p >Welcome to my corner of the Internet.</p></div>
+          <div className=''>
+            <div className='text-3xl mb-4'>
+              <p >Welcome to my website.</p>
+            </div>
+            <div className='text-md'>
+              <p>Check out the tabs at the top to see what I've been working on</p>
+            </div>
+          </div>
           <Link
             href="/about"
             className="bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
@@ -23,13 +30,13 @@ export default function Home({ posts }) {
             About Me
           </Link>
         </div>
-        <div className="rounded-full shadow-lg ">
+        <div className="rounded-full shadow-lg ml-6">
           <Image
             src="/static/images/IMG_7084.png"
             alt="avatar"
-            width={250}
-            height={250}
-            className="h-50 w-50 rounded-full shadow-gray-300"
+            width={350}
+            height={350}
+            className="h-100 w-100 rounded-full shadow-gray-300"
           />
         </div>
       </div>
@@ -39,7 +46,7 @@ export default function Home({ posts }) {
             Latest Posts
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
+            {siteMetadata.latestPostDescription}
           </p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
