@@ -71,8 +71,13 @@ module.exports = () => {
           protocol: 'https',
           hostname: 'picsum.photos',
         },
+        {
+          protocol: 'https',
+          hostname: 'hc-cdn.hel1.your-objectstorage.com',
+        },
       ],
     },
+    
     async headers() {
       return [
         {
