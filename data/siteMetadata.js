@@ -20,6 +20,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/arnav-chauhan-74988b268/',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
+  phone: '+1 (919) 665-9687',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
