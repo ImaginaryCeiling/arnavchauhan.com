@@ -75,6 +75,10 @@ module.exports = () => {
           protocol: 'https',
           hostname: 'hc-cdn.hel1.your-objectstorage.com',
         },
+        {
+          protocol: 'https',
+          hostname: 'www.timmons.com',
+        }
       ],
     },
     

@@ -18,7 +18,14 @@ const projectsData: Project[] = [
     youtube: "https://www.youtube.com/watch?v=JVtFxCJw5ng",
 
 
-  }
+  },
+  {
+    title: "DECA 2025 - SEOR - Cary Tennis Park",
+    description: "Our DECA paper for the Sports and Entertainment Operations Research Event from 2025, where we analyzed Cary Tennis Park and proposed a plan to implement AI at the facility.",
+    imgSrc: "https://www.timmons.com/wp-content/uploads/2020/01/web_cary-tennis-park-110222-image-seq-019.jpg",
+    href: "https://deca2025.vercel.app",
+    github: "https://github.com/ImaginaryCeiling/deca_site",
+  },
   
 ]
 
