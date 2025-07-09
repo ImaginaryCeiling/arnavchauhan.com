@@ -28,7 +28,7 @@ export default function MeetPage() {
 
             <div className="rounded-full shadow-lg">
                 <Image
-                src="/static/images/IMG_7084.png"
+                src="/static/images/chauhan.jpeg"
                 alt="Arnav's profile"
                 width={250}
                 height={250}

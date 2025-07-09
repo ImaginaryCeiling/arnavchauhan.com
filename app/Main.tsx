@@ -25,10 +25,10 @@ export default function Home({ posts }) {
         </div>
         <div className="rounded-full shadow-lg ">
           <Image
-            src="/static/images/IMG_7084.png"
+            src="/static/images/chauhan2.jpeg"
             alt="avatar"
-            width={250}
-            height={250}
+            width={350}
+            height={350}
             className="h-50 w-50 rounded-full shadow-gray-300"
           />
         </div>
