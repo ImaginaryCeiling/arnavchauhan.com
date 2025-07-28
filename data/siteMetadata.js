@@ -17,7 +17,7 @@ const siteMetadata = {
   twitter: 'https://x.com/_arnavchauhan',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com/in/arnav-chauhan-74988b268/',
+  linkedin: 'https://www.linkedin.com/in/arnavcn',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
   phone: '+1 (919) 665-9687',
