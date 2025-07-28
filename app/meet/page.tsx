@@ -73,7 +73,7 @@ export default function MeetPage() {
           <ContactCard
             icon={<SocialIcon kind="twitter" href="https://x.com/arnavchauhan"  size={6}/>}
             title="X"
-            value="@arnavc08"
+            value="@_arnavchauhan"
             href={siteMetadata.twitter as string}
             hideIcon
           />
