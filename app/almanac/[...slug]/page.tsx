@@ -48,13 +48,22 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async () => {
-  const paths = allAlmanacs.map((p) => ({ slug: p.slug.split('/') }))
+  // Filter out drafts in production
+  const filteredPosts = process.env.NODE_ENV === 'production' 
+    ? allAlmanacs.filter(post => post.draft !== true)
+    : allAlmanacs
+  const paths = filteredPosts.map((p) => ({ slug: p.slug.split('/') }))
   return paths
 }
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = decodeURI(params.slug.join('/'))
-  const sortedCoreContents = allCoreContent(sortPosts(allAlmanacs))
+  const sortedPosts = sortPosts(allAlmanacs)
+  // Filter out drafts in production
+  const filteredPosts = process.env.NODE_ENV === 'production' 
+    ? sortedPosts.filter(post => post.draft !== true)
+    : sortedPosts
+  const sortedCoreContents = allCoreContent(filteredPosts)
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   
   if (postIndex === -1) {
@@ -64,6 +73,12 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
   const post = allAlmanacs.find((p) => p.slug === slug) as Almanac
+  
+  // Also check if the individual post is a draft in production
+  if (process.env.NODE_ENV === 'production' && post.draft === true) {
+    return notFound()
+  }
+
   const mainContent = coreContent(post)
   const jsonLd = post.structuredData
 

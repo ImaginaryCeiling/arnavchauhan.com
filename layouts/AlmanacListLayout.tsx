@@ -59,7 +59,12 @@ export default function AlmanacListLayout({ posts, title }: AlmanacListLayoutPro
                     {tags && tags.length > 0 && (
                       <div className="flex flex-wrap gap-1">
                         {tags.slice(0, 3).map((tag) => (
-                          <Tag key={tag} text={tag} />
+                          <span 
+                            key={tag}
+                            className="mr-3 text-sm font-medium uppercase text-primary-500 rounded px-2 py-1 bg-primary-50 dark:bg-primary-900/20"
+                          >
+                            {tag.split(' ').join('-')}
+                          </span>
                         ))}
                       </div>
                     )}
