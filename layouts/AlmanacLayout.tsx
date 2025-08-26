@@ -17,8 +17,8 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 
 interface LayoutProps {
   content: CoreContent<Almanac>
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
+  next?: { path: string; title?: string }
+  prev?: { path: string; title?: string }
   children: ReactNode
 }
 
