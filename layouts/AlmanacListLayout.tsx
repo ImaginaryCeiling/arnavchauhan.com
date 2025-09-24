@@ -18,7 +18,7 @@ export default function AlmanacListLayout({ posts, title }: AlmanacListLayoutPro
             {title}
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Random thoughts, observations, and ideas that don't need full blog posts
+            Random thoughts, observations, and ideas
           </p>
         </div>
         <div className="grid gap-6 py-8 md:grid-cols-2 lg:grid-cols-3">
