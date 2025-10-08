@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import booksData from '@/data/booksData'
+import booksData, { type BookEntry } from '@/data/booksData'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata: Metadata = genPageMetadata({ title: 'Books' })
@@ -11,7 +11,18 @@ interface BookInfo {
   coverUrl: string
 }
 
-async function fetchBookInfo(title: string): Promise<BookInfo | null> {
+async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null> {
+  // If entry has custom cover and author, use it directly
+  if (typeof entry === 'object' && entry.coverUrl && entry.author) {
+    return {
+      title: entry.title,
+      author: entry.author,
+      coverUrl: entry.coverUrl,
+    }
+  }
+
+  // Otherwise, fetch from API
+  const title = typeof entry === 'string' ? entry : entry.title
   try {
     const response = await fetch(
       `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&limit=1`,
@@ -37,7 +48,7 @@ async function fetchBookInfo(title: string): Promise<BookInfo | null> {
 }
 
 export default async function BooksPage() {
-  const books = await Promise.all(booksData.map((title) => fetchBookInfo(title)))
+  const books = await Promise.all(booksData.map((entry) => fetchBookInfo(entry)))
 
   const validBooks = books.filter((book): book is BookInfo => book !== null)
 
@@ -47,7 +58,7 @@ export default async function BooksPage() {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Books
         </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">My reading list</p>
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Books I've read</p>
       </div>
 
       <div className="container py-12">
