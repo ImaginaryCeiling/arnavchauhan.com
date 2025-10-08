@@ -78,10 +78,14 @@ module.exports = () => {
         {
           protocol: 'https',
           hostname: 'www.timmons.com',
-        }
+        },
+        {
+          protocol: 'https',
+          hostname: 'covers.openlibrary.org',
+        },
       ],
     },
-    
+
     async headers() {
       return [
         {
