@@ -21,7 +21,42 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
     }
   }
 
-  // Otherwise, fetch from API
+  // If entry has edition ID, fetch from edition endpoint
+  if (typeof entry === 'object' && entry.editionId) {
+    try {
+      const response = await fetch(`https://openlibrary.org/books/${entry.editionId}.json`, {
+        next: { revalidate: 86400 },
+      })
+      const data = await response.json()
+
+      // Use hardcoded author if provided, otherwise fetch from API
+      let authorName = 'Unknown Author'
+      if (entry.author) {
+        authorName = entry.author
+      } else if (data.authors && data.authors.length > 0) {
+        try {
+          const authorResponse = await fetch(`https://openlibrary.org${data.authors[0].key}.json`, {
+            next: { revalidate: 86400 },
+          })
+          const authorData = await authorResponse.json()
+          authorName = authorData.name || authorName
+        } catch {
+          // Keep default author name if fetch fails
+        }
+      }
+
+      return {
+        title: data.title || entry.title,
+        author: authorName,
+        coverUrl: `https://covers.openlibrary.org/b/olid/${entry.editionId}-L.jpg`,
+      }
+    } catch (error) {
+      console.error(`Error fetching edition: ${entry.editionId}`, error)
+      // Fall through to title search
+    }
+  }
+
+  // Otherwise, fetch from API by title search
   const title = typeof entry === 'string' ? entry : entry.title
   try {
     const response = await fetch(
