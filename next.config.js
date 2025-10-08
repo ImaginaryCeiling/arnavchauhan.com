@@ -9,13 +9,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // Note: 'unsafe-inline' for styles is required for Next.js styled-jsx and Tailwind
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is vercel.live;
-  style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app https://analytics.umami.is https://vercel.live;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' data: blob: https://picsum.photos https://hc-cdn.hel1.your-objectstorage.com https://www.timmons.com https://covers.openlibrary.org https://avatars.githubusercontent.com;
-  media-src 'self' *.s3.amazonaws.com;
-  connect-src 'self' https://analytics.umami.is https://giscus.app vitals.vercel-insights.com;
-  font-src 'self' data: fonts.gstatic.com;
-  frame-src giscus.app;
+  media-src 'self' https://*.s3.amazonaws.com;
+  connect-src 'self' https://analytics.umami.is https://giscus.app https://vitals.vercel-insights.com;
+  font-src 'self' data: https://fonts.gstatic.com;
+  frame-src https://giscus.app;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
