@@ -5,6 +5,22 @@ export interface BookEntry {
   editionId?: string // Open Library edition identifier (e.g., 'OL7353617M')
 }
 
+export const currentlyReading: (string | BookEntry)[] = [
+  // Add books you're currently reading here
+  // Example:
+  // { title: 'Book Title', editionId: 'OL7353617M' },
+  {
+    title: 'You Can Just Do Things: The Power of Permissionless Action',
+    author: 'Jay Yang',
+    coverUrl: 'https://m.media-amazon.com/images/I/610-cujJgUL._UF1000,1000_QL80_.jpg',
+  },
+  {
+    title: 'The Arthashastra',
+    author: 'Kautilya',
+    coverUrl: 'https://m.media-amazon.com/images/I/91lh2LgvORL._UF1000,1000_QL80_.jpg',
+  },
+]
+
 const booksData: (string | BookEntry)[] = [
   { title: 'Animal Farm', editionId: 'OL23269355M' },
   { title: 'Running with Purpose', editionId: 'OL46514340M' },

@@ -89,6 +89,10 @@ module.exports = () => {
           protocol: 'https',
           hostname: 'covers.openlibrary.org',
         },
+        {
+          protocol: 'https',
+          hostname: 'm.media-amazon.com',
+        },
       ],
     },
 

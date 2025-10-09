@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import booksData, { type BookEntry } from '@/data/booksData'
+import booksData, { currentlyReading, type BookEntry } from '@/data/booksData'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata: Metadata = genPageMetadata({ title: 'Books' })
@@ -83,9 +83,13 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
 }
 
 export default async function BooksPage() {
-  const books = await Promise.all(booksData.map((entry) => fetchBookInfo(entry)))
+  const [currentBooks, completedBooks] = await Promise.all([
+    Promise.all(currentlyReading.map((entry) => fetchBookInfo(entry))),
+    Promise.all(booksData.map((entry) => fetchBookInfo(entry))),
+  ])
 
-  const validBooks = books.filter((book): book is BookInfo => book !== null)
+  const validCurrentBooks = currentBooks.filter((book): book is BookInfo => book !== null)
+  const validCompletedBooks = completedBooks.filter((book): book is BookInfo => book !== null)
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -93,28 +97,62 @@ export default async function BooksPage() {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Books
         </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Books I've read</p>
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          Books I've read and am currently reading
+        </p>
       </div>
 
       <div className="container py-12">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {validBooks.map((book, index) => (
-            <div key={index} className="flex flex-col">
-              <div className="mb-3 overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105">
-                <Image
-                  src={book.coverUrl}
-                  alt={`${book.title} cover`}
-                  width={200}
-                  height={300}
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-              <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
-                {book.title}
-              </h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+        {validCurrentBooks.length > 0 && (
+          <div className="mb-12">
+            <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+              Currently Reading
+            </h2>
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {validCurrentBooks.map((book, index) => (
+                <div key={index} className="flex flex-col">
+                  <div className="mb-3 overflow-hidden rounded-lg shadow-lg ring-2 ring-primary-500 transition-transform hover:scale-105">
+                    <Image
+                      src={book.coverUrl}
+                      alt={`${book.title} cover`}
+                      width={200}
+                      height={300}
+                      className="h-auto w-full object-cover"
+                    />
+                  </div>
+                  <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    {book.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+        )}
+
+        <div>
+          <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            Completed Books
+          </h2>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {validCompletedBooks.map((book, index) => (
+              <div key={index} className="flex flex-col">
+                <div className="mb-3 overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105">
+                  <Image
+                    src={book.coverUrl}
+                    alt={`${book.title} cover`}
+                    width={200}
+                    height={300}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  {book.title}
+                </h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
