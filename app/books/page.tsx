@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import booksData, { currentlyReading, type BookEntry } from '@/data/booksData'
 import { genPageMetadata } from 'app/seo'
 
@@ -9,15 +10,29 @@ interface BookInfo {
   title: string
   author: string
   coverUrl: string
+  bookUrl: string
 }
 
 async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null> {
+  // Helper function to get Goodreads URL from ISBN or fallback to search
+  const getGoodreadsUrl = (isbn: string | null, title: string, author: string): string => {
+    if (isbn) {
+      return `https://www.goodreads.com/book/isbn/${isbn}`
+    }
+    const searchQuery = `${title} ${author}`
+    return `https://www.goodreads.com/search?q=${encodeURIComponent(searchQuery)}`
+  }
+
   // If entry has custom cover and author, use it directly
   if (typeof entry === 'object' && entry.coverUrl && entry.author) {
+    // Check for manual Goodreads URL first
+    const bookUrl = entry.goodreadsUrl || getGoodreadsUrl(null, entry.title, entry.author)
+
     return {
       title: entry.title,
       author: entry.author,
       coverUrl: entry.coverUrl,
+      bookUrl,
     }
   }
 
@@ -45,10 +60,24 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
         }
       }
 
+      const bookTitle = data.title || entry.title
+
+      // Extract ISBN from Open Library data (prefer ISBN-13, then ISBN-10)
+      const isbn =
+        data.isbn_13?.[0] ||
+        data.isbn_10?.[0] ||
+        data.identifiers?.isbn_13?.[0] ||
+        data.identifiers?.isbn_10?.[0] ||
+        null
+
+      // Check for manual Goodreads URL, otherwise use ISBN or search
+      const bookUrl = entry.goodreadsUrl || getGoodreadsUrl(isbn, bookTitle, authorName)
+
       return {
-        title: data.title || entry.title,
+        title: bookTitle,
         author: authorName,
         coverUrl: `https://covers.openlibrary.org/b/olid/${entry.editionId}-L.jpg`,
+        bookUrl,
       }
     } catch (error) {
       console.error(`Error fetching edition: ${entry.editionId}`, error)
@@ -67,12 +96,21 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
 
     if (data.docs && data.docs.length > 0) {
       const book = data.docs[0]
+      const bookTitle = book.title || title
+      const authorName = book.author_name ? book.author_name[0] : 'Unknown Author'
+
+      // Extract ISBN from search results (prefer ISBN-13, then ISBN-10)
+      const isbn = book.isbn?.[0] || null
+
+      const bookUrl = getGoodreadsUrl(isbn, bookTitle, authorName)
+
       return {
-        title: book.title || title,
-        author: book.author_name ? book.author_name[0] : 'Unknown Author',
+        title: bookTitle,
+        author: authorName,
         coverUrl: book.cover_i
           ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
           : '/static/images/book-placeholder.jpg',
+        bookUrl,
       }
     }
     return null
@@ -110,7 +148,13 @@ export default async function BooksPage() {
             </h2>
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {validCurrentBooks.map((book, index) => (
-                <div key={index} className="flex flex-col">
+                <Link
+                  key={index}
+                  href={book.bookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col transition-opacity hover:opacity-80"
+                >
                   <div className="mb-3 overflow-hidden rounded-lg shadow-lg ring-2 ring-primary-500 transition-transform hover:scale-105">
                     <Image
                       src={book.coverUrl}
@@ -124,7 +168,7 @@ export default async function BooksPage() {
                     {book.title}
                   </h3>
                   <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -136,7 +180,13 @@ export default async function BooksPage() {
           </h2>
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {validCompletedBooks.map((book, index) => (
-              <div key={index} className="flex flex-col">
+              <Link
+                key={index}
+                href={book.bookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col transition-opacity hover:opacity-80"
+              >
                 <div className="mb-3 overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105">
                   <Image
                     src={book.coverUrl}
@@ -150,7 +200,7 @@ export default async function BooksPage() {
                   {book.title}
                 </h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
