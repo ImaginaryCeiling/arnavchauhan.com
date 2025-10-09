@@ -4,16 +4,22 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-// You might need to insert additional domains in script-src if you are using external services
+// Content Security Policy configuration
+// Note: 'unsafe-eval' is required for Next.js development and build-time features
+// Note: 'unsafe-inline' for styles is required for Next.js styled-jsx and Tailwind
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is;
-  style-src 'self' 'unsafe-inline';
-  img-src * blob: data:;
-  media-src *.s3.amazonaws.com;
-  connect-src *;
-  font-src 'self';
-  frame-src giscus.app
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app https://analytics.umami.is https://vercel.live;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' data: blob: https://picsum.photos https://hc-cdn.hel1.your-objectstorage.com https://www.timmons.com https://covers.openlibrary.org https://avatars.githubusercontent.com;
+  media-src 'self' https://*.s3.amazonaws.com;
+  connect-src 'self' https://analytics.umami.is https://giscus.app https://vitals.vercel-insights.com;
+  font-src 'self' data: https://fonts.gstatic.com;
+  frame-src https://giscus.app;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
 `
 
 const securityHeaders = [
@@ -45,7 +51,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains',
+    value: 'max-age=31536000; includeSubDomains; preload',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
   {
