@@ -176,7 +176,7 @@ export default async function BooksPage() {
 
         <div>
           <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Completed Books
+            Books I've Read
           </h2>
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {validCompletedBooks.map((book, index) => (

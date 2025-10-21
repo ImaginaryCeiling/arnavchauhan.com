@@ -78,6 +78,24 @@ const booksData: (string | BookEntry)[] = [
     author: 'Ray Bradbury',
     goodreadsUrl: 'https://www.goodreads.com/book/show/4381.Fahrenheit_451',
   },
+  {
+    title: 'Catch-22',
+  },
+  {
+    title: 'The Kite Runner',
+    editionId: 'OL57895724M',
+  },
+  { title: 'Never Quit', editionId: 'OL27373108M' },
+  {
+    title: 'What if?',
+    editionId: 'OL44567676M',
+  },
+  {
+    title: 'A Promised Land',
+  },
+  {
+    title: 'Scythe',
+  },
 
   // Add more book titles here
   // Or use custom formats:
