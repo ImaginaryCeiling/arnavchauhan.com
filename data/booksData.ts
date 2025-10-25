@@ -10,12 +10,7 @@ export const currentlyReading: (string | BookEntry)[] = [
   // Add books you're currently reading here
   // Example:
   // { title: 'Book Title', editionId: 'OL7353617M' },
-  {
-    title: 'You Can Just Do Things: The Power of Permissionless Action',
-    author: 'Jay Yang',
-    coverUrl: 'https://m.media-amazon.com/images/I/610-cujJgUL._UF1000,1000_QL80_.jpg',
-    goodreadsUrl: 'https://www.goodreads.com/book/show/232294916-you-can-just-do-things',
-  },
+
   {
     title: 'The Arthashastra',
     author: 'Kautilya',
@@ -25,6 +20,12 @@ export const currentlyReading: (string | BookEntry)[] = [
 ]
 
 const booksData: (string | BookEntry)[] = [
+  {
+    title: 'You Can Just Do Things: The Power of Permissionless Action',
+    author: 'Jay Yang',
+    coverUrl: 'https://m.media-amazon.com/images/I/610-cujJgUL._UF1000,1000_QL80_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/book/show/232294916-you-can-just-do-things',
+  },
   {
     title: 'Animal Farm',
     editionId: 'OL23269355M',
