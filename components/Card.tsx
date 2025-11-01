@@ -12,27 +12,15 @@ const Card = ({ title, description, imgSrc, href, github, youtube }) => (
       {imgSrc &&
         (href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
-            <Image
-              alt={title}
-              src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
-              width={544}
-              height={306}
-            />
+            <Image alt={title} src={imgSrc} className="h-auto w-full" width={544} height={306} />
           </Link>
         ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
-          />
+          <Image alt={title} src={imgSrc} className="h-auto w-full" width={544} height={306} />
         ))}
       <div className="p-6">
         <h2 className="mb-3 text-2xl font-bold leading-8 tracking-tight">
           {href ? (
-            <Link href={href} aria-label={`Link to ${title}` } className="underline">
+            <Link href={href} aria-label={`Link to ${title}`} className="underline">
               {title}
             </Link>
           ) : (
@@ -43,11 +31,9 @@ const Card = ({ title, description, imgSrc, href, github, youtube }) => (
         <div className="flex space-x-3">
           {/* Add SocialIcon components here */}
           {/* Example: <SocialIcon kind="github" href="https://github.com/username" /> */}
-          {github && (<SocialIcon kind='github' href={github} />)}
-          {youtube && (<SocialIcon kind='youtube' href={youtube} />)}
-
+          {github && <SocialIcon kind="github" href={github} />}
+          {youtube && <SocialIcon kind="youtube" href={youtube} />}
         </div>
-        
       </div>
     </div>
   </div>
