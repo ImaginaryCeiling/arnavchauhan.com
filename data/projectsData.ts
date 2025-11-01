@@ -38,7 +38,7 @@ const projectsData: Project[] = [
   {
     title: 'Frog Population Simulator',
     description:
-      'Started making simulations for my teachers to use in their classes after realizing school does not need to be boring. Now making tools for any teacher to use natural language to generate their own custom simulations instantly.',
+      'Got bored and started making simulations for my teachers to use in their classes. Now making tools for any teacher to use natural language to generate their own custom simulations instantly.',
     imgSrc: '/static/images/frog-population-simulator.png',
     href: 'https://frog-population.streamlit.app/',
     github: 'https://github.com/ImaginaryCeiling/frog-population-simulator',
