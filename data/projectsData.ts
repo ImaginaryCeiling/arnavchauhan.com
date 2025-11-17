@@ -21,7 +21,7 @@ const projectsData: Project[] = [
   {
     title: 'DECA 2025 - SEOR - Cary Tennis Park',
     description:
-      'Our DECA paper for the Sports and Entertainment Operations Research Event from 2025, where we analyzed Cary Tennis Park and proposed a plan to implement AI at the facility.',
+      'Our DECA paper for the Sports and Entertainment Operations Research Event from 2025, where we analyzed operations at Cary Tennis Park and proposed a plan to implement AI at the facility.',
     imgSrc:
       'https://www.timmons.com/wp-content/uploads/2020/01/web_cary-tennis-park-110222-image-seq-019.jpg',
     href: 'https://deca2025.vercel.app',
@@ -42,6 +42,14 @@ const projectsData: Project[] = [
     imgSrc: '/static/images/frog-population-simulator.png',
     href: 'https://frog-population.streamlit.app/',
     github: 'https://github.com/ImaginaryCeiling/frog-population-simulator',
+  },
+  {
+    title: 'Vitalis Health',
+    description:
+      '1st Place in the Healthcare track at HackNYU 2025. Built a central OS for nurses to monitor their hospital floors easier and spend more time taking care of their patients. Snuck into an emergency room and found a nurse to interview to help us make the product.',
+    imgSrc: '',
+    href: 'https://main.d204vv20o17ygk.amplifyapp.com/',
+    github: 'https://github.com/SupratikPanuganti/HackNYU',
   },
 ]
 
