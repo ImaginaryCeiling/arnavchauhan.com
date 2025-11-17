@@ -42,6 +42,15 @@ const projectsData: Project[] = [
     href: 'https://frog-population.streamlit.app/',
     github: 'https://github.com/ImaginaryCeiling/frog-population-simulator',
   },
+  {
+    title: 'DECA 2025 - SEOR - Cary Tennis Park',
+    description:
+      'Our DECA paper for the Sports and Entertainment Operations Research Event from 2025, where we analyzed operations at Cary Tennis Park and proposed a plan to implement AI at the facility.',
+    imgSrc:
+      'https://www.timmons.com/wp-content/uploads/2020/01/web_cary-tennis-park-110222-image-seq-019.jpg',
+    href: 'https://deca2025.vercel.app',
+    github: 'https://github.com/ImaginaryCeiling/deca_site',
+  },
 ]
 
 export default projectsData
