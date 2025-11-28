@@ -17,11 +17,18 @@ const booksData: (string | BookEntry)[] = [
     currentlyReading: true,
   },
   {
+    title: 'Outliers: The Story of Success',
+    author: 'Malcom Gladwell',
+    coverUrl: 'https://m.media-amazon.com/images/I/91lYcUJ8JsL._AC_UF1000,1000_QL80_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/book/show/3228917-outliers',
+    currentlyReading: true,
+  },
+  {
     title: 'The Arthashastra',
     author: 'Kautilya',
     coverUrl: 'https://m.media-amazon.com/images/I/91lh2LgvORL._UF1000,1000_QL80_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/book/show/1769362.The_Arthashastra',
-    currentlyReading: true,
+    currentlyReading: false,
   },
   {
     title: 'You Can Just Do Things: The Power of Permissionless Action',
