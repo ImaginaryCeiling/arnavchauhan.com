@@ -13,7 +13,7 @@ const projectsData: Project[] = [
     description:
       '1st Place in the Healthcare track at HackNYU 2025. Built a central OS for nurses to monitor their hospital floors easier and spend more time taking care of their patients. Snuck into an emergency room and found a nurse to interview to help us make the product.',
     imgSrc: '/static/images/vitalis.png',
-    href: 'https://main.d204vv20o17ygk.amplifyapp.com/',
+    href: 'https://vitalis.arnavchauhan.com/',
     github: 'https://github.com/SupratikPanuganti/HackNYU',
   },
   {
