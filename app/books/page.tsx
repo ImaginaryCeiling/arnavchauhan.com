@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import booksData, { currentlyReading, type BookEntry } from '@/data/booksData'
+import booksData, { type BookEntry } from '@/data/booksData'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata: Metadata = genPageMetadata({ title: 'Books' })
@@ -121,9 +121,16 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
 }
 
 export default async function BooksPage() {
+  const readingList = booksData.filter(
+    (entry) => typeof entry === 'object' && entry.currentlyReading
+  )
+  const completedList = booksData.filter(
+    (entry) => typeof entry === 'string' || !entry.currentlyReading
+  )
+
   const [currentBooks, completedBooks] = await Promise.all([
-    Promise.all(currentlyReading.map((entry) => fetchBookInfo(entry))),
-    Promise.all(booksData.map((entry) => fetchBookInfo(entry))),
+    Promise.all(readingList.map((entry) => fetchBookInfo(entry))),
+    Promise.all(completedList.map((entry) => fetchBookInfo(entry))),
   ])
 
   const validCurrentBooks = currentBooks.filter((book): book is BookInfo => book !== null)
