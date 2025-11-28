@@ -4,28 +4,25 @@ export interface BookEntry {
   coverUrl?: string
   editionId?: string // Open Library edition identifier (e.g., 'OL7353617M')
   goodreadsUrl?: string // Direct Goodreads URL (overrides ISBN lookup)
+  currentlyReading?: boolean
 }
 
-export const currentlyReading: (string | BookEntry)[] = [
-  // Add books you're currently reading here
-  // Example:
-  // { title: 'Book Title', editionId: 'OL7353617M' },
+const booksData: (string | BookEntry)[] = [
   {
     title: 'What The Dog Saw And Other Adventures',
     author: 'Malcom Gladwell',
     coverUrl: 'https://m.media-amazon.com/images/I/61WvcA51fzL._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl:
       'https://www.goodreads.com/book/show/6516450-what-the-dog-saw-and-other-adventures',
+    currentlyReading: true,
   },
   {
     title: 'The Arthashastra',
     author: 'Kautilya',
     coverUrl: 'https://m.media-amazon.com/images/I/91lh2LgvORL._UF1000,1000_QL80_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/book/show/1769362.The_Arthashastra',
+    currentlyReading: true,
   },
-]
-
-const booksData: (string | BookEntry)[] = [
   {
     title: 'You Can Just Do Things: The Power of Permissionless Action',
     author: 'Jay Yang',
