@@ -3,8 +3,8 @@ const siteMetadata = {
   title: 'ArnavChauhan',
   author: 'Arnav Chauhan',
   headerTitle: 'ArnavChauhan',
-  mainpageHead: "Latest Posts",
-  description: 'Arnav Chauhan\'s Blog and Portfolio',
+  mainpageHead: 'Latest Posts',
+  description: "Arnav Chauhan's Blog and Portfolio",
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://arnavchauhan.com',
@@ -54,7 +54,7 @@ const siteMetadata = {
     // content security policy in the `next.config.js` file.
     // Select a provider and use the environment variables associated to it
     // https://vercel.com/docs/environment-variables
-    provider: 'giscus', // supported providers: giscus, utterances, disqus
+    provider: null, // supported providers: giscus, utterances, disqus
     giscusConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://giscus.app/
