@@ -152,7 +152,7 @@ export default async function BooksPage() {
           <div className="mb-8">
             <details className="group">
               <summary className="flex cursor-pointer list-none items-center text-2xl font-bold text-gray-900 dark:text-gray-100">
-                Want to Read
+                Reading List
                 <span className="ml-2 transition-transform group-open:-rotate-180">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
