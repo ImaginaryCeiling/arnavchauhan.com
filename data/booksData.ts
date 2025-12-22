@@ -5,9 +5,15 @@ export interface BookEntry {
   editionId?: string // Open Library edition identifier (e.g., 'OL7353617M')
   goodreadsUrl?: string // Direct Goodreads URL (overrides ISBN lookup)
   currentlyReading?: boolean
+  toRead?: boolean
 }
 
 const booksData: (string | BookEntry)[] = [
+  {
+    title: 'The Psychology of Money',
+    author: 'Morgan Housel',
+    toRead: true,
+  },
   {
     title: 'What The Dog Saw And Other Adventures',
     author: 'Malcom Gladwell',
@@ -17,11 +23,18 @@ const booksData: (string | BookEntry)[] = [
     currentlyReading: true,
   },
   {
+    title: 'Flash Boys: A Wall Street Revolt',
+    author: 'Michael Lewis',
+    coverUrl: 'https://m.media-amazon.com/images/I/51QkiBt2jUL._AC_UF1000,1000_QL80_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/book/show/24724602-flash-boys',
+    currentlyReading: true,
+  },
+  {
     title: 'Outliers: The Story of Success',
     author: 'Malcom Gladwell',
     coverUrl: 'https://m.media-amazon.com/images/I/91lYcUJ8JsL._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/book/show/3228917-outliers',
-    currentlyReading: true,
+    currentlyReading: false,
   },
   {
     title: 'The Arthashastra',

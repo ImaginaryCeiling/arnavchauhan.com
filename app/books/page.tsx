@@ -124,16 +124,19 @@ export default async function BooksPage() {
   const readingList = booksData.filter(
     (entry) => typeof entry === 'object' && entry.currentlyReading
   )
+  const toReadList = booksData.filter((entry) => typeof entry === 'object' && entry.toRead)
   const completedList = booksData.filter(
-    (entry) => typeof entry === 'string' || !entry.currentlyReading
+    (entry) => typeof entry === 'string' || (!entry.currentlyReading && !entry.toRead)
   )
 
-  const [currentBooks, completedBooks] = await Promise.all([
+  const [currentBooks, toReadBooks, completedBooks] = await Promise.all([
     Promise.all(readingList.map((entry) => fetchBookInfo(entry))),
+    Promise.all(toReadList.map((entry) => fetchBookInfo(entry))),
     Promise.all(completedList.map((entry) => fetchBookInfo(entry))),
   ])
 
   const validCurrentBooks = currentBooks.filter((book): book is BookInfo => book !== null)
+  const validToReadBooks = toReadBooks.filter((book): book is BookInfo => book !== null)
   const validCompletedBooks = completedBooks.filter((book): book is BookInfo => book !== null)
 
   return (
@@ -142,12 +145,60 @@ export default async function BooksPage() {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Books
         </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Books I've read and am currently reading
-        </p>
       </div>
 
       <div className="container py-12">
+        {validToReadBooks.length > 0 && (
+          <div className="mb-8">
+            <details className="group">
+              <summary className="flex cursor-pointer list-none items-center text-2xl font-bold text-gray-900 dark:text-gray-100">
+                Want to Read
+                <span className="ml-2 transition-transform group-open:rotate-180">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </summary>
+              <div className="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                {validToReadBooks.map((book, index) => (
+                  <Link
+                    key={index}
+                    href={book.bookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col transition-opacity hover:opacity-80"
+                  >
+                    <div className="mb-3 overflow-hidden rounded-lg shadow-lg ring-1 ring-gray-400 transition-transform hover:scale-105">
+                      <Image
+                        src={book.coverUrl}
+                        alt={`${book.title} cover`}
+                        width={200}
+                        height={300}
+                        className="h-auto w-full object-cover"
+                      />
+                    </div>
+                    <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                      {book.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+                  </Link>
+                ))}
+              </div>
+            </details>
+          </div>
+        )}
+
         {validCurrentBooks.length > 0 && (
           <div className="mb-12">
             <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
