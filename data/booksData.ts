@@ -27,7 +27,7 @@ const booksData: (string | BookEntry)[] = [
     author: 'Michael Lewis',
     coverUrl: 'https://m.media-amazon.com/images/I/51QkiBt2jUL._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/book/show/24724602-flash-boys',
-    currentlyReading: true,
+    currentlyReading: false,
   },
   {
     title: 'Outliers: The Story of Success',
