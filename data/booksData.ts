@@ -10,16 +10,18 @@ export interface BookEntry {
 
 const booksData: (string | BookEntry)[] = [
   {
-    title: 'The Psychology of Money',
-    author: 'Morgan Housel',
-    toRead: true,
-  },
-  {
     title: 'What The Dog Saw And Other Adventures',
     author: 'Malcom Gladwell',
     coverUrl: 'https://m.media-amazon.com/images/I/61WvcA51fzL._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl:
       'https://www.goodreads.com/book/show/6516450-what-the-dog-saw-and-other-adventures',
+    toRead: true,
+  },
+  {
+    title: "Lilliput Land: How Small is Driving India's Mega Consumption Story",
+    author: 'Rama Bijapurkar',
+    coverUrl: 'https://m.media-amazon.com/images/I/617JmWhOjkL._SY522_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/en/book/show/207639030-lilliput-land',
     currentlyReading: true,
   },
   {
