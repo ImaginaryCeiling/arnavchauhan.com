@@ -261,13 +261,19 @@ export default async function BooksPage() {
                     className="h-auto w-full object-cover"
                   />
                 </div>
-                <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
-                  {book.title}
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
-                {book.rating && (
-                  <p className="text-xs text-gray-600 dark:text-gray-400">{book.rating}/10</p>
-                )}
+                <div className="mb-1 flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                      {book.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+                  </div>
+                  {book.rating && (
+                    <p className="whitespace-nowrap text-xs font-semibold text-gray-600 dark:text-gray-400">
+                      {book.rating}/5
+                    </p>
+                  )}
+                </div>
               </Link>
             ))}
           </div>
