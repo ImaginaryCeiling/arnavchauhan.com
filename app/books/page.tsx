@@ -11,6 +11,7 @@ interface BookInfo {
   author: string
   coverUrl: string
   bookUrl: string
+  rating?: number
 }
 
 async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null> {
@@ -33,6 +34,7 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
       author: entry.author,
       coverUrl: entry.coverUrl,
       bookUrl,
+      rating: entry.rating,
     }
   }
 
@@ -78,6 +80,7 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
         author: authorName,
         coverUrl: `https://covers.openlibrary.org/b/olid/${entry.editionId}-L.jpg`,
         bookUrl,
+        rating: entry.rating,
       }
     } catch (error) {
       console.error(`Error fetching edition: ${entry.editionId}`, error)
@@ -104,6 +107,9 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
 
       const bookUrl = getGoodreadsUrl(isbn, bookTitle, authorName)
 
+      // Extract rating from entry if it's an object
+      const rating = typeof entry === 'object' ? entry.rating : undefined
+
       return {
         title: bookTitle,
         author: authorName,
@@ -111,6 +117,7 @@ async function fetchBookInfo(entry: string | BookEntry): Promise<BookInfo | null
           ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
           : '/static/images/book-placeholder.jpg',
         bookUrl,
+        rating,
       }
     }
     return null
@@ -258,6 +265,9 @@ export default async function BooksPage() {
                   {book.title}
                 </h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400">{book.author}</p>
+                {book.rating && (
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{book.rating}/10</p>
+                )}
               </Link>
             ))}
           </div>
