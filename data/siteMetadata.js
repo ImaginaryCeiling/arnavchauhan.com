@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Arnav Chauhan',
   headerTitle: 'ArnavChauhan',
   mainpageHead: 'Latest Posts',
-  description: "Arnav Chauhan's Blog and Portfolio",
+  description: 'Some of my thoughts',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://arnavchauhan.com',
