@@ -22,6 +22,11 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com',
   phone: '+1 (919) 665-9687',
   locale: 'en-US',
+  // Update this when you have upcoming travel plans
+  nextTravel: {
+    destination: 'NYC',
+    dateRange: 'Feb 2026', // optional, can be null
+  },
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
