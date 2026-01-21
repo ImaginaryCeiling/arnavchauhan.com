@@ -1,7 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import SubdomainPill from '@/components/SubdomainPill'
-import TravelPill from '@/components/TravelPill'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import Image from 'next/image'
@@ -37,14 +36,8 @@ export default function Home({ posts }) {
           />
         </div>
       </div>
-      <div className="mb-8 mt-4 flex flex-wrap items-center gap-3">
+      <div className="mb-8 mt-4 flex space-x-4">
         <SubdomainPill href="https://photos.arnavchauhan.com" emoji="📷" text="Photos" />
-        {siteMetadata.nextTravel && (
-          <TravelPill
-            destination={siteMetadata.nextTravel.destination}
-            dateRange={siteMetadata.nextTravel.dateRange}
-          />
-        )}
       </div>
 
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
