@@ -19,7 +19,7 @@ const siteMetadata = {
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/arnavcn',
   threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
+  instagram: 'https://www.instagram.com/arnavc2',
   phone: '+1 (919) 665-9687',
   locale: 'en-US',
   analytics: {
