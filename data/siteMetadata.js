@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'ArnavChauhan',
   author: 'Arnav Chauhan',
-  headerTitle: 'ArnavChauhan',
+  headerTitle: 'Arnav Chauhan',
   mainpageHead: 'Latest Posts',
   description: 'Some of my thoughts',
   language: 'en-us',
