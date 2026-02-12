@@ -25,10 +25,10 @@ export async function POST(request: Request) {
     }
 
     const { data: contactsData } = await resend.contacts.list({ audienceId })
-    const contacts = contactsData?.data ?? []
+    const contacts = (contactsData?.data ?? []).filter((c) => !c.unsubscribed)
 
     if (contacts.length === 0) {
-      return NextResponse.json({ error: 'No subscribers found' }, { status: 400 })
+      return NextResponse.json({ error: 'No active subscribers found' }, { status: 400 })
     }
 
     const postUrl = `${siteMetadata.siteUrl}/blog/${post.slug}`
@@ -44,6 +44,7 @@ export async function POST(request: Request) {
           <p><a href="${postUrl}">Read the full update &rarr;</a></p>
           <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
           <p style="color: #6b7280; font-size: 14px;">You're receiving this because you subscribed to investor updates from Arnav Chauhan.</p>
+          <p style="color: #6b7280; font-size: 12px;"><a href="https://arnavchauhan.com/update/unsubscribe?email=${encodeURIComponent(contact.email)}" style="color: #6b7280;">Unsubscribe</a></p>
         </div>
       `,
     }))
