@@ -41,11 +41,11 @@ export default function UpdatePage() {
           Investor Updates
         </h1>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Get periodic updates on what I've been up to. Investments in me are not limited to capital
-          but include time, energy, and attention.
+          Get periodic updates on what I've been up to. Investments in me are not limited to
+          capital, but include time, energy, and attention.
         </p>
-        <p className="text-lg font-bold leading-7 text-gray-500 dark:text-gray-400">
-          Please keep this link private.
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          If you're here, I appreciate the time we've spent together!
         </p>
       </div>
 
