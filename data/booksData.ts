@@ -19,6 +19,13 @@ const booksData: (string | BookEntry)[] = [
     toRead: true,
   },
   {
+    title: 'Bullshit Jobs: A Theory',
+    author: 'David Graeber',
+    coverUrl: 'https://m.media-amazon.com/images/I/71rDaYBmH5L._AC_UF1000,1000_QL80_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/book/show/34466958-bullshit-jobs',
+    currentlyReading: true,
+  },
+  {
     title: "Lilliput Land: How Small is Driving India's Mega Consumption Story",
     author: 'Rama Bijapurkar',
     coverUrl: 'https://m.media-amazon.com/images/I/617JmWhOjkL._SY522_.jpg',
