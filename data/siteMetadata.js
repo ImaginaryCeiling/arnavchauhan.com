@@ -14,7 +14,7 @@ const siteMetadata = {
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'arnav216@gmail.com',
   github: 'https://github.com/ImaginaryCeiling',
-  twitter: 'https://x.com/_arnavchauhan',
+  twitter: 'https://x.com/arnvcn',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/arnavcn',
