@@ -72,7 +72,9 @@ export default function UpdatePage() {
                 </label>
                 <input
                   id="firstName"
+                  name="firstName"
                   type="text"
+                  autoComplete="given-name"
                   required
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -90,7 +92,9 @@ export default function UpdatePage() {
                 </label>
                 <input
                   id="lastName"
+                  name="lastName"
                   type="text"
+                  autoComplete="family-name"
                   required
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -106,7 +110,9 @@ export default function UpdatePage() {
             <div className="flex gap-2">
               <input
                 id="email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
