@@ -8,6 +8,8 @@ export default function UpdatePage() {
   const [email, setEmail] = useState('')
   const [state, setState] = useState<FormState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -58,6 +60,32 @@ export default function UpdatePage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
+            <div className="flex-row">
+              <div className="flex-col gap-2">
+                <label
+                  htmlFor="first_name"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  First Name
+                </label>
+                <input
+                  id="firstName"
+                  type="firstName"
+                  required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="John"
+                  className="flex-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                  disabled={state === 'loading'}
+                />
+              </div>
+              <label
+                htmlFor="last_name"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Last Name
+              </label>
+            </div>
             <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Email address
             </label>
