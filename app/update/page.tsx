@@ -20,7 +20,7 @@ export default function UpdatePage() {
       const res = await fetch('/api/update/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, firstName, lastName }),
       })
 
       if (!res.ok) {
@@ -30,6 +30,8 @@ export default function UpdatePage() {
 
       setState('success')
       setEmail('')
+      setFirstName('')
+      setLastName('')
     } catch (err) {
       setState('error')
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong')
@@ -60,31 +62,43 @@ export default function UpdatePage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
-            <div className="flex-row">
-              <div className="flex-col gap-2">
+            <div className="flex gap-4">
+              <div className="flex flex-1 flex-col gap-1">
                 <label
-                  htmlFor="first_name"
+                  htmlFor="firstName"
                   className="text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   First Name
                 </label>
                 <input
                   id="firstName"
-                  type="firstName"
+                  type="text"
                   required
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="John"
-                  className="flex-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
                   disabled={state === 'loading'}
                 />
               </div>
-              <label
-                htmlFor="last_name"
-                className="text-sm font-medium text-gray-700 dark:text-gray-300"
-              >
-                Last Name
-              </label>
+              <div className="flex flex-1 flex-col gap-1">
+                <label
+                  htmlFor="lastName"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Last Name
+                </label>
+                <input
+                  id="lastName"
+                  type="text"
+                  required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Doe"
+                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                  disabled={state === 'loading'}
+                />
+              </div>
             </div>
             <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Email address
