@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Arnav Chauhan',
   headerTitle: 'Arnav Chauhan',
   mainpageHead: 'Latest Posts',
-  description: 'Some of my thoughts',
+  description: 'Some of my ramblings. Never proofread to the extent they should be.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://arnavchauhan.com',
