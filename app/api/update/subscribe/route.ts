@@ -12,14 +12,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 })
     }
 
-    await resend.contacts.create({
+    const { data: contactData, error: contactError } = await resend.contacts.create({
       email,
       firstName,
       lastName,
       audienceId,
     })
 
-    await resend.emails.send({
+    if (contactError) {
+      console.error('Resend contact error:', contactError)
+      return NextResponse.json({ error: contactError.message }, { status: 500 })
+    }
+
+    console.log('Contact created:', contactData)
+
+    const { error: emailError } = await resend.emails.send({
       from: 'Arnav Chauhan <updates@arnavchauhan.com>',
       to: email,
       subject: "Arnav's Investor Updates",
@@ -34,6 +41,11 @@ export async function POST(request: Request) {
         </div>
       `,
     })
+
+    if (emailError) {
+      console.error('Resend email error:', emailError)
+      return NextResponse.json({ error: emailError.message }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
