@@ -49,7 +49,12 @@ export default function UpdatePage() {
           capital, but include time, energy, and attention.
         </p>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          If you're here, I appreciate the time we've spent together!
+          If there's someone else you think should be on this list, feel free to send this link to
+          them as well. This page isn't publicly available on the Internet, but if you're here, I
+          trust your judgement.
+        </p>
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          I appreciate the time we've spent together and interactions we've had!
         </p>
       </div>
 
