@@ -22,8 +22,7 @@
       "@/layouts/*": ["layouts/*"],
       "@/css/*": ["css/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
-      "pliny/utils/formatDate": ["./node_modules/pliny/utils/formatDate"],
-      "pliny/utils/contentlayer": ["./node_modules/pliny/utils/contentlayer"]
+      "pliny/*": ["./node_modules/pliny/*"]
     },
     "plugins": [
       {
