@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
       process.env.LINKSHORTENER_KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
     ),
     SHORTNER_TOKEN: Boolean(process.env.SHORTNER_TOKEN),
-    SHORTENER_BASE_URL: process.env.SHORTENER_BASE_URL || '(default: https://arnv.ch)',
+    SHORTNER_BASE_URL: process.env.SHORTNER_BASE_URL || '(default: https://arnv.ch)',
   }
 
   let redisStatus: { ok: boolean; latencyMs?: number; error?: string; linkCount?: number }

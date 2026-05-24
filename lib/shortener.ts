@@ -104,5 +104,5 @@ export function requireAuth(req: Request): Response | null {
 }
 
 export function baseUrl(): string {
-  return process.env.SHORTENER_BASE_URL || 'https://arnv.ch'
+  return process.env.SHORTNER_BASE_URL || 'https://arnv.ch'
 }
