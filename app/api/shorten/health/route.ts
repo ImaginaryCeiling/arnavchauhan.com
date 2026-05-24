@@ -9,11 +9,13 @@ export async function GET(req: NextRequest) {
   if (unauth) return unauth
 
   const env = {
-    KV_REST_API_URL: Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL),
-    KV_REST_API_TOKEN: Boolean(
-      process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
+    LINKSHORTENER_KV_REST_API_URL: Boolean(
+      process.env.LINKSHORTENER_KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
     ),
-    SHORTENER_TOKEN: Boolean(process.env.SHORTENER_TOKEN),
+    LINKSHORTENER_KV_REST_API_TOKEN: Boolean(
+      process.env.LINKSHORTENER_KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
+    ),
+    SHORTNER_TOKEN: Boolean(process.env.SHORTNER_TOKEN),
     SHORTENER_BASE_URL: process.env.SHORTENER_BASE_URL || '(default: https://arnv.ch)',
   }
 
@@ -29,6 +31,7 @@ export async function GET(req: NextRequest) {
     redisStatus = { ok: false, error: err instanceof Error ? err.message : String(err) }
   }
 
-  const ok = env.KV_REST_API_URL && env.KV_REST_API_TOKEN && redisStatus.ok
+  const ok =
+    env.LINKSHORTENER_KV_REST_API_URL && env.LINKSHORTENER_KV_REST_API_TOKEN && redisStatus.ok
   return Response.json({ ok, env, redis: redisStatus }, { status: ok ? 200 : 503 })
 }
