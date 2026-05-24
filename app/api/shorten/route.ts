@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
           clickCount: 0,
         }
         await putLink(link)
-        created.push({ recipient, slug: variant, shortUrl: `${base}/s/${variant}` })
+        created.push({ recipient, slug: variant, shortUrl: `${base}/link/${variant}` })
       }
       return Response.json({ group: groupId, links: created }, { status: 201 })
     }
