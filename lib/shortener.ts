@@ -25,7 +25,7 @@ export function redis(): Redis {
 }
 
 const ALPHABET = 'abcdefghijkmnpqrstuvwxyz23456789' // no 1,l,o,0 to avoid confusion
-export function randomSlug(len = 6): string {
+export function randomSlug(len = 3): string {
   const bytes = new Uint8Array(len)
   crypto.getRandomValues(bytes)
   let out = ''

@@ -28,7 +28,7 @@ async function uniqueSlug(preferred?: string): Promise<string> {
     return preferred
   }
   for (let i = 0; i < 8; i++) {
-    const s = randomSlug(6)
+    const s = randomSlug(3)
     if (!(await getLink(s))) return s
   }
   throw new Error('failed to generate unique slug')
@@ -60,16 +60,15 @@ export async function POST(req: NextRequest) {
 
   const now = new Date().toISOString()
   const base = baseUrl()
-  const groupId = group || (recipients?.length ? slug || randomSlug(5) : null)
+  const groupId = group || (recipients?.length ? slug || randomSlug(3) : null)
 
   try {
     if (recipients && recipients.length > 0) {
       const created: Array<{ recipient: string; slug: string; shortUrl: string }> = []
       for (const recipient of recipients) {
-        const baseSlug = slug || groupId || randomSlug(5)
         let variant = ''
-        for (let i = 0; i < 8; i++) {
-          const candidate = `${baseSlug}-${randomSlug(3)}`
+        for (let i = 0; i < 16; i++) {
+          const candidate = randomSlug(3)
           if (!(await getLink(candidate))) {
             variant = candidate
             break
