@@ -11,26 +11,36 @@ export interface BookEntry {
 
 const booksData: (string | BookEntry)[] = [
   {
+    title: 'The Man in the High Castle',
+    author: 'Philip K. Dick',
+    coverUrl: 'https://m.media-amazon.com/images/I/51GnvfpTJ9L._SY466_.jpg',
+    goodreadsUrl: 'https://www.goodreads.com/book/isbn/0547572484',
+    currentlyReading: true,
+  },
+  {
     title: 'What The Dog Saw And Other Adventures',
     author: 'Malcom Gladwell',
     coverUrl: 'https://m.media-amazon.com/images/I/61WvcA51fzL._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl:
       'https://www.goodreads.com/book/show/6516450-what-the-dog-saw-and-other-adventures',
-    toRead: true,
+    toRead: false,
+    rating: 5,
   },
   {
     title: 'Bullshit Jobs: A Theory',
     author: 'David Graeber',
     coverUrl: 'https://m.media-amazon.com/images/I/71rDaYBmH5L._AC_UF1000,1000_QL80_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/book/show/34466958-bullshit-jobs',
-    currentlyReading: true,
+    currentlyReading: false,
+    rating: 4.5,
   },
   {
     title: "Lilliput Land: How Small is Driving India's Mega Consumption Story",
     author: 'Rama Bijapurkar',
     coverUrl: 'https://m.media-amazon.com/images/I/617JmWhOjkL._SY522_.jpg',
     goodreadsUrl: 'https://www.goodreads.com/en/book/show/207639030-lilliput-land',
-    currentlyReading: true,
+    currentlyReading: false,
+    rating: 4,
   },
   {
     title: 'Flash Boys: A Wall Street Revolt',
